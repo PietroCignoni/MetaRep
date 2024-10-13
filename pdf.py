@@ -22,18 +22,20 @@ class ProbabilityDensityDistribution(InterpolatedUnivariateSpline):
         return self.integral(self._x.min(), self._x.max())
 
 
-def Lin(x, a):
-    return a*x
+def Func(x, a):
+    return a*x*x
 
 
 if __name__ == '__main__':
-    x = np.linspace(0., 1., 5)
-    y = Lin(x)
+    a = 0.5
+    x = np.linspace(-1., 1., 5)
+    y = Func(x, a)
     plt.plot(x, y)
 
     pdf = ProbabilityDensityDistribution(x, y)
-    x0 = 0.5
-    print(np.exp(x0), pdf(x0))
+    x0 = 0.345  
+    print(Func(x0, a), pdf(x0))
     print(pdf.normalization())
     pdf.plot()
+    plt.plot(x0, pdf(x0), '*')
     plt.show()

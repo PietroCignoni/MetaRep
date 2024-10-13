@@ -12,8 +12,9 @@ class Reading:
 
 
 
+"""
 class OldReading:
-    """Storage for a single voltage"""
+    #Storage for a single voltage
     def __init__(self, timestamp, adc):
         self.timestamp = timestamp
         self.adc = adc
@@ -24,7 +25,7 @@ class OldReading:
     
     def __str__(self):
         return f'Reading at {self.timestamp} s: {self.adc} ADC counts ({self.voltage()})'
-
+"""
 
 class VoltageData:
     """Interface to a set of votage readings"""
@@ -49,9 +50,7 @@ class VoltageData:
     def __iter__(self):
         return self
     
-
     def __next__(self):
-        #return self.parse_Line(next(self._line_iterator))
         return next(self._iterator)
     
     def __getitem__(self, index):
